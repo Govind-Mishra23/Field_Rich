@@ -1,74 +1,77 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Leaf, 
-  Award, 
-  Users, 
-  ArrowRight,
-  CheckCircle
-} from 'lucide-react'
-import './App.css'
+"use client"
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { Phone, Mail, MapPin, Leaf, Award, Users, ArrowRight, CheckCircle } from "lucide-react"
+import "./App.css"
+import LoadingScreen from "./Components/loading-screen"
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
   const products = [
     {
       name: "Garam Masala",
       description: "Traditional blend of warming spices",
       image: "🌶️",
-      category: "Signature Blend"
+      category: "Signature Blend",
     },
     {
       name: "Chaat Masala",
       description: "Tangy and flavorful street food spice",
       image: "🍃",
-      category: "Signature Blend"
+      category: "Signature Blend",
     },
     {
       name: "Turmeric Powder",
       description: "Pure and potent golden spice",
       image: "🟡",
-      category: "Regional Specialty"
+      category: "Regional Specialty",
     },
     {
       name: "Chilly Powder",
       description: "Perfect heat for every dish",
       image: "🔴",
-      category: "Regional Specialty"
+      category: "Regional Specialty",
     },
     {
       name: "Sambar Masala",
       description: "Authentic South Indian blend",
       image: "🌿",
-      category: "Regional Specialty"
+      category: "Regional Specialty",
     },
     {
       name: "Custom Blend",
       description: "Personalized for your needs",
       image: "✨",
-      category: "Custom Blend"
-    }
+      category: "Custom Blend",
+    },
   ]
 
   const advantages = [
     {
       icon: <Leaf className="w-8 h-8 text-green-600" />,
       title: "Authenticity",
-      description: "Focus on authentic taste and quality"
+      description: "Focus on authentic taste and quality",
     },
     {
       icon: <Award className="w-8 h-8 text-amber-600" />,
       title: "Sustainable Practices",
-      description: "Farm-to-table supply chain and eco-friendly practices"
+      description: "Farm-to-table supply chain and eco-friendly practices",
     },
     {
       icon: <Users className="w-8 h-8 text-blue-600" />,
       title: "Brand Story",
-      description: "Rooted in tradition, our story resonates with consumers"
-    }
+      description: "Rooted in tradition, our story resonates with consumers",
+    },
   ]
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false)
+  }
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
@@ -76,7 +79,7 @@ function App() {
       <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-orange-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center space-x-2"
@@ -86,15 +89,23 @@ function App() {
               </div>
               <span className="text-2xl font-bold text-red-800">FIELD RICH</span>
             </motion.div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               className="hidden md:flex space-x-8"
             >
-              <a href="#home" className="text-gray-700 hover:text-red-600 transition-colors">Home</a>
-              <a href="#products" className="text-gray-700 hover:text-red-600 transition-colors">Products</a>
-              <a href="#about" className="text-gray-700 hover:text-red-600 transition-colors">About</a>
-              <a href="#contact" className="text-gray-700 hover:text-red-600 transition-colors">Contact</a>
+              <a href="#home" className="text-gray-700 hover:text-red-600 transition-colors">
+                Home
+              </a>
+              <a href="#products" className="text-gray-700 hover:text-red-600 transition-colors">
+                Products
+              </a>
+              <a href="#about" className="text-gray-700 hover:text-red-600 transition-colors">
+                About
+              </a>
+              <a href="#contact" className="text-gray-700 hover:text-red-600 transition-colors">
+                Contact
+              </a>
             </motion.div>
           </div>
         </div>
@@ -104,21 +115,12 @@ function App() {
       <section id="home" className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-5xl lg:text-6xl font-bold text-red-800 mb-6">
-                FIELD RICH
-              </h1>
-              <p className="text-2xl text-gray-700 mb-8 italic">
-                "Harvested From Nature's Best!"
-              </p>
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+              <h1 className="text-5xl lg:text-6xl font-bold text-red-800 mb-6">FIELD RICH</h1>
+              <p className="text-2xl text-gray-700 mb-8 italic">"Harvested From Nature's Best!"</p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Discover the authentic taste of India with our premium spice blends. 
-                From traditional recipes to custom creations, we bring nature's finest 
-                flavors to your kitchen.
+                Discover the authentic taste of India with our premium spice blends. From traditional recipes to custom
+                creations, we bring nature's finest flavors to your kitchen.
               </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -129,7 +131,7 @@ function App() {
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -146,7 +148,7 @@ function App() {
               </div>
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                 className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg"
               >
                 <span className="text-2xl">⭐</span>
@@ -168,7 +170,8 @@ function App() {
           >
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Product Range</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From signature blends to regional specialties, discover the authentic flavors that make every dish extraordinary.
+              From signature blends to regional specialties, discover the authentic flavors that make every dish
+              extraordinary.
             </p>
           </motion.div>
 
@@ -224,9 +227,7 @@ function App() {
                 whileHover={{ y: -5 }}
                 className="text-center bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex justify-center mb-4">
-                  {advantage.icon}
-                </div>
+                <div className="flex justify-center mb-4">{advantage.icon}</div>
                 <h3 className="text-xl font-bold text-gray-800 mb-3">{advantage.title}</h3>
                 <p className="text-gray-600">{advantage.description}</p>
               </motion.div>
@@ -242,7 +243,9 @@ function App() {
           >
             <h3 className="text-2xl font-bold text-gray-800 mb-4">Business Owner</h3>
             <p className="text-xl text-gray-600 mb-2">Shailendra Singh</p>
-            <p className="text-gray-500">Leading FIELD RICH with passion and dedication to bring you the finest spices from nature's bounty.</p>
+            <p className="text-gray-500">
+              Leading FIELD RICH with passion and dedication to bring you the finest spices from nature's bounty.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -259,7 +262,8 @@ function App() {
           >
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ready to experience the authentic taste of FIELD RICH? Contact us directly to learn more about our products.
+              Ready to experience the authentic taste of FIELD RICH? Contact us directly to learn more about our
+              products.
             </p>
           </motion.div>
 
@@ -275,12 +279,15 @@ function App() {
                 <Mail className="w-6 h-6 text-red-600" />
                 <div>
                   <p className="font-semibold text-gray-800">Email</p>
-                  <a href="mailto:contact@fieldrichindia.com" className="text-red-600 hover:text-red-800 transition-colors">
+                  <a
+                    href="mailto:contact@fieldrichindia.com"
+                    className="text-red-600 hover:text-red-800 transition-colors"
+                  >
                     contact@fieldrichindia.com
                   </a>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-4 p-4 bg-orange-50 rounded-lg">
                 <Phone className="w-6 h-6 text-red-600" />
                 <div>
@@ -288,7 +295,7 @@ function App() {
                   <p className="text-gray-600">+91 [Your Phone Number]</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-4 p-4 bg-orange-50 rounded-lg">
                 <MapPin className="w-6 h-6 text-red-600" />
                 <div>
@@ -307,9 +314,8 @@ function App() {
             >
               <h3 className="text-2xl font-bold text-gray-800 mb-6">Direct Connection</h3>
               <p className="text-gray-600 mb-6">
-                We believe in building direct relationships with our customers. 
-                Contact us to discuss your spice requirements, custom blends, 
-                or any questions about our products.
+                We believe in building direct relationships with our customers. Contact us to discuss your spice
+                requirements, custom blends, or any questions about our products.
               </p>
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
@@ -350,9 +356,7 @@ function App() {
               Bringing authentic Indian spices to your table with love and tradition.
             </p>
             <div className="border-t border-orange-600 pt-6">
-              <p className="text-orange-200">
-                © 2024 FIELD RICH. All rights reserved.
-              </p>
+              <p className="text-orange-200">© 2024 FIELD RICH. All rights reserved.</p>
             </div>
           </motion.div>
         </div>
