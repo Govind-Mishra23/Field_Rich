@@ -12,7 +12,7 @@ import { Hero } from "./Components/Hero"
 import Navbar from "./Components/Navbar"
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const handleLoadingComplete = () => {
     setIsLoading(false)
   }
