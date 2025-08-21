@@ -1,59 +1,68 @@
-import dhaniyaPowder from "../assets/dhaniyapowder.jpeg"
-import WholePeeper from "../assets/WholePepper.jpg"
-import turmericPowder from "../assets/turmericpowder.jpg"
-import chillyPowder from "../assets/chillypowder.jpg"
-import jeeraPowder from "../assets/jeerapowder.jpg"
-import garamMasala from "../assets/garammasala.jpg"
-import pepperPowder from "../assets/pepperpowder.jpg"
+import dhaniyaPowder from "../assets/dhaniyapowder.jpeg";
 
 export const products = [
   {
     name: "Dhaniya Powder",
-    description:
-      "Freshly ground from premium coriander seeds, our Dhaniya Powder adds a natural aroma and a subtle earthy flavor that enhances curries, dals, and everyday cooking.",
+    description: "Traditional blend of warming spices with authentic coriander flavor, perfect for curries and marinades",
+    image: "🌶️",
     imgUrl: dhaniyaPowder,
     category: "Signature Blend",
+    origin: "Rajasthan, India",
+    processing: "Traditional stone grinding",
+    benefits: ["Enhances flavor", "Natural preservative", "Rich in antioxidants"]
   },
   {
     name: "Whole Pepper",
-    description:
-      "Handpicked black peppercorns with a bold, sharp bite and intense fragrance — the king of spices for seasoning, marinades, and authentic Indian recipes.",
-    imgUrl: WholePeeper,
+    description: "Premium black peppercorns with intense heat and aromatic flavor, essential for any spice collection",
+    image: "🍃",
     category: "Signature Blend",
+    origin: "Kerala, India",
+    processing: "Sun-dried and hand-sorted",
+    benefits: ["Natural heat", "Digestive aid", "Antibacterial properties"]
   },
   {
     name: "Turmeric Powder",
-    description:
-      "Pure and natural turmeric, rich in curcumin, delivering a golden color, warm flavor, and time-tested health benefits in every pinch.",
-    imgUrl: turmericPowder,
+    description: "Pure and potent golden spice with anti-inflammatory properties, the cornerstone of Indian cooking",
+    image: "🟡",
     category: "Regional Specialty",
+    origin: "Tamil Nadu, India",
+    processing: "Traditional grinding",
+    benefits: ["Anti-inflammatory", "Natural color", "Immune support"]
   },
   {
     name: "Chilly Powder",
-    description:
-      "Fiery red chillies, carefully dried and ground to perfection, offering vibrant color and a balanced heat that elevates every dish.",
-    imgUrl: chillyPowder,
+    description: "Perfect heat for every dish with balanced spiciness and rich red color from premium red chilies",
+    image: "🔴",
     category: "Regional Specialty",
+    origin: "Andhra Pradesh, India",
+    processing: "Sun-dried and ground",
+    benefits: ["Controlled heat", "Rich color", "Metabolism boost"]
   },
   {
     name: "Jeera Powder",
-    description:
-      "Aromatic roasted cumin ground into fine powder, lending a warm, nutty flavor and digestive benefits — a must-have for authentic Indian cooking.",
-    imgUrl: jeeraPowder,
+    description: "Authentic South Indian blend with warm, earthy cumin flavor, essential for rice dishes and curries",
+    image: "🌿",
     category: "Regional Specialty",
+    origin: "Gujarat, India",
+    processing: "Traditional roasting",
+    benefits: ["Digestive aid", "Warm flavor", "Traditional taste"]
   },
   {
     name: "Garam Masala",
-    description:
-      "A traditional blend of select spices roasted and ground to perfection, Garam Masala adds depth, warmth, and complexity to gravies, curries, and snacks.",
-    imgUrl: garamMasala,
+    description: "Complex blend of warming spices including cardamom, cinnamon, and cloves for authentic Indian cuisine",
+    image: "✨",
     category: "Custom Blend",
+    origin: "North India",
+    processing: "Custom blending",
+    benefits: ["Warming spices", "Complex flavor", "Traditional recipe"]
   },
   {
     name: "Pepper Powder",
-    description:
-      "Finely ground black pepper with a strong, pungent taste and rich aroma — the perfect finishing spice for soups, salads, and everyday meals.",
-    imgUrl: pepperPowder,
+    description: "Finely ground black pepper with intense heat and aromatic flavor, perfect for seasoning and cooking",
+    image: "✨",
     category: "Custom Blend",
+    origin: "Kerala, India",
+    processing: "Fine grinding",
+    benefits: ["Intense heat", "Aromatic flavor", "Versatile use"]
   },
-]
+];

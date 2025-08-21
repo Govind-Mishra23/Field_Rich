@@ -1,40 +1,26 @@
-"use client"
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Phone, Mail, MapPin, Leaf, Award, Users, ArrowRight, CheckCircle } from "lucide-react"
-import "./App.css"
-import LoadingScreen from "./Components/loading-screen"
-import {Footer} from "./Components/Footer"
-import { ContactSection } from "./Components/ContactSection"
-import {Products} from "./Components/Products"
-import { About } from "./Components/About"
-import { Hero } from "./Components/Hero"
-import Navbar from "./Components/Navbar"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import { Footer } from './Components/Footer';
+import { HomePage } from './Pages/HomePage';
+import { ProductsPage } from './Pages/ProductsPage';
+import { ProductDetailPage } from './Pages/ProductDetailPage';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false)
-  const handleLoadingComplete = () => {
-    setIsLoading(false)
-  }
-  if (isLoading) {
-    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />
-  }
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
-      {/* Navigation */}
-      <Navbar />
-      {/* Hero Section */}
-      <Hero />
-      {/* Products Section */}
-      <Products/>
-      {/* About Section */}
-      <About />
-      {/* Contact Section */}
-      <ContactSection />
-      {/* Footer */}
-      <Footer />
-    </div>
-  )
+    <Router>
+      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:id" element={<ProductDetailPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;
