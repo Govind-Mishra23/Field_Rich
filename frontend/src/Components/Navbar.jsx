@@ -53,12 +53,16 @@ const Navbar = () => {
             >
               Products
             </Link>
-            <a 
-              href="mailto:contact@fieldrichindia.com" 
-              className="text-gray-700 hover:text-orange-600 transition-colors"
+            <Link 
+              to="/contact" 
+              className={`transition-colors ${
+                isActive('/contact') 
+                  ? 'text-orange-600 font-semibold' 
+                  : 'text-gray-700 hover:text-orange-600'
+              }`}
             >
               Contact
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>
