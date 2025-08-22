@@ -10,6 +10,11 @@ export const ProductDetailPage = () => {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
+    // Scroll to top when page loads
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     // Find product by ID (converted from URL slug)
     const productId = id.replace(/-/g, ' ');
     const foundProduct = products.find(p => 

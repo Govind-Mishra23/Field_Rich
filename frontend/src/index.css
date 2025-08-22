@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+/* Scroll restoration and smooth behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+/* Force scroll to top on page load/refresh */
+html, body {
+  scroll-behavior: auto;
+}
+
+/* Reset scroll position on route change */
+* {
+  scroll-behavior: auto;
+}

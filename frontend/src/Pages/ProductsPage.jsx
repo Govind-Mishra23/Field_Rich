@@ -2,8 +2,13 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
+import { useEffect } from 'react';
 
 export const ProductsPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
       {/* Header */}

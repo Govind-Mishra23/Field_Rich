@@ -1,4 +1,10 @@
 import dhaniyaPowder from "../assets/dhaniyapowder.jpeg";
+import wholePepper from "../assets/WholePepper.jpg";
+import turmericPowder from "../assets/TurmericPowder.jpg";
+import chillyPowder from "../assets/chillypowder.jpg";
+import jeeraPowder from "../assets/jeerapowder.jpg";
+import garamMasala from "../assets/garammasala.jpg";
+import pepperPowder from "../assets/pepperpowder.jpg";
 
 export const products = [
   {
@@ -15,6 +21,7 @@ export const products = [
     name: "Whole Pepper",
     description: "Premium black peppercorns with intense heat and aromatic flavor, essential for any spice collection",
     image: "🍃",
+    imgUrl: wholePepper,
     category: "Signature Blend",
     origin: "Kerala, India",
     processing: "Sun-dried and hand-sorted",
@@ -24,6 +31,7 @@ export const products = [
     name: "Turmeric Powder",
     description: "Pure and potent golden spice with anti-inflammatory properties, the cornerstone of Indian cooking",
     image: "🟡",
+    imgUrl: turmericPowder,
     category: "Regional Specialty",
     origin: "Tamil Nadu, India",
     processing: "Traditional grinding",
@@ -33,6 +41,7 @@ export const products = [
     name: "Chilly Powder",
     description: "Perfect heat for every dish with balanced spiciness and rich red color from premium red chilies",
     image: "🔴",
+    imgUrl: chillyPowder,
     category: "Regional Specialty",
     origin: "Andhra Pradesh, India",
     processing: "Sun-dried and ground",
@@ -42,6 +51,7 @@ export const products = [
     name: "Jeera Powder",
     description: "Authentic South Indian blend with warm, earthy cumin flavor, essential for rice dishes and curries",
     image: "🌿",
+    imgUrl: jeeraPowder,
     category: "Regional Specialty",
     origin: "Gujarat, India",
     processing: "Traditional roasting",
@@ -51,6 +61,7 @@ export const products = [
     name: "Garam Masala",
     description: "Complex blend of warming spices including cardamom, cinnamon, and cloves for authentic Indian cuisine",
     image: "✨",
+    imgUrl: garamMasala,
     category: "Custom Blend",
     origin: "North India",
     processing: "Custom blending",
@@ -60,6 +71,7 @@ export const products = [
     name: "Pepper Powder",
     description: "Finely ground black pepper with intense heat and aromatic flavor, perfect for seasoning and cooking",
     image: "✨",
+    imgUrl: pepperPowder,
     category: "Custom Blend",
     origin: "Kerala, India",
     processing: "Fine grinding",

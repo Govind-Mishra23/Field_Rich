@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion';
 import { ArrowLeft, Mail, Phone, MapPin, Clock, MessageCircle, Instagram, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const ContactPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const contactInfo = [
     {
       icon: Phone,
