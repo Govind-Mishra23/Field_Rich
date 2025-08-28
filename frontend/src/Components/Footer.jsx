@@ -45,11 +45,11 @@ export const Footer = () => {
               </a>
               <div className="flex items-center gap-3 text-orange-200">
                 <Phone className="w-4 h-4" />
-                <span>+91 98765 43210</span>
+                <span>+91 97406 22985</span>
               </div>
               <div className="flex items-center gap-3 text-orange-200">
                 <MapPin className="w-4 h-4" />
-                <span>Mumbai, India</span>
+                <span>No.227 , Rajya Post Office , Gulzarganj, Dist. Jaunpur, Uttar Pradesh - 222135</span>
               </div>
             </div>
           </motion.div>

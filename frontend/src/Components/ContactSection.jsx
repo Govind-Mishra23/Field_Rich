@@ -43,7 +43,7 @@ export const ContactSection = () => {
                 <Phone className="w-6 h-6 text-red-600" />
                 <div>
                   <p className="font-semibold text-gray-800">Phone</p>
-                  <p className="text-gray-600">+91 [Your Phone Number]</p>
+                  <p className="text-gray-600">+91 9740622985</p>
                 </div>
               </div>
 

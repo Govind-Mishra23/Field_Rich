@@ -1,205 +1,250 @@
-import { motion } from 'framer-motion';
-import { ArrowLeft, Star, Leaf, Award, Users } from 'lucide-react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { products } from '../data/products';
-import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowLeft,
+  Star,
+  Leaf,
+  Award,
+  Users,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { products } from "../data/products";
+import { useState, useEffect } from "react";
 
 export const ProductDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
+  const [activeImage, setActiveImage] = useState(0);
+  const [activeTab, setActiveTab] = useState("overview");
 
   useEffect(() => {
-    // Scroll to top when page loads
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    // Find product by ID (converted from URL slug)
-    const productId = id.replace(/-/g, ' ');
-    const foundProduct = products.find(p => 
-      p.name.toLowerCase() === productId.toLowerCase()
+    const productId = id.replace(/-/g, " ");
+    const foundProduct = products.find(
+      (p) => p.name.toLowerCase() === productId.toLowerCase()
     );
-    
     if (foundProduct) {
       setProduct(foundProduct);
     } else {
-      // Redirect to products page if product not found
-      navigate('/products');
+      navigate("/products");
     }
   }, [id, navigate]);
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-6xl mb-4">🌿</div>
-          <p className="text-gray-600">Loading product...</p>
-        </div>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+        <p className="text-gray-500 text-lg">Loading product...</p>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
-      {/* Header */}
-      <section className="pt-24 pb-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-            <Link to="/" className="hover:text-orange-600 transition-colors">Home</Link>
-            <span>/</span>
-            <Link to="/products" className="hover:text-orange-600 transition-colors">Products</Link>
-            <span>/</span>
-            <span className="text-gray-800 font-medium">{product.name}</span>
-          </nav>
-          
-          {/* Back Button */}
-          <div className="mb-8">
-            <button
-              onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-semibold transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to Products</span>
-            </button>
-          </div>
+      {/* HEADER */}
+      <section className="pt-24 pb-6 px-6 max-w-6xl mx-auto">
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => navigate(-1)}
+            className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 font-semibold"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back
+          </button>
         </div>
       </section>
 
-      {/* Product Details */}
-      <section className="pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Product Image */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative"
-            >
-              <div className="bg-white rounded-2xl shadow-lg p-8 border border-orange-100">
-                <div className="h-96 bg-gradient-to-br from-amber-100 to-orange-100 rounded-xl flex items-center justify-center overflow-hidden">
-                  {product.imgUrl ? (
-                    <img
-                      src={product.imgUrl}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="text-9xl">{product.image}</div>
-                  )}
-                </div>
-                
-                {/* Product Badge */}
-                <div className="mt-6 text-center">
-                  <span className="inline-block bg-orange-100 text-orange-800 text-sm font-semibold px-4 py-2 rounded-full">
-                    {product.category}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+      {/* MAIN GRID */}
+      <section className="pb-20 px-6 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+        {/* IMAGE GALLERY */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center"
+        >
+          <div className="relative w-full h-[450px] bg-white p-6 rounded-2xl shadow-lg">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeImage}
+                src={product.images?.[activeImage] || product.imgUrl}
+                alt={product.name}
+                className="w-full h-full object-cover rounded-xl"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+              />
+            </AnimatePresence>
 
-            {/* Product Info */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              {/* Product Title & Description */}
-              <div>
-                <h1 className="text-4xl font-bold text-gray-800 mb-4">{product.name}</h1>
-                <p className="text-lg text-gray-600 leading-relaxed">{product.description}</p>
-              </div>
-
-              {/* Product Features */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-800">Key Features</h3>
-                <div className="grid gap-3">
-                  {[
-                    { icon: Leaf, text: '100% Natural & Organic' },
-                    { icon: Award, text: 'Premium Quality' },
-                    { icon: Users, text: 'Traditional Processing' }
-                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
-                        <feature.icon className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-gray-700">{feature.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Product Details */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-800">Product Details</h3>
-                <div className="bg-white rounded-xl p-6 border border-orange-100">
-                  <div className="grid gap-4">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Category:</span>
-                      <span className="font-medium text-gray-800">{product.category}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Origin:</span>
-                      <span className="font-medium text-gray-800">India</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Processing:</span>
-                      <span className="font-medium text-gray-800">Traditional Methods</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Preservatives:</span>
-                      <span className="font-medium text-gray-800">None</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Usage & Benefits */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-gray-800">Usage & Benefits</h3>
-                <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6 border border-amber-200">
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
-                      <span>Enhances flavor and aroma of dishes</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
-                      <span>Rich in natural antioxidants and nutrients</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
-                      <span>Perfect for traditional Indian cooking</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Star className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
-                      <span>No artificial additives or preservatives</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link
-                  to="/products"
-                  className="flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
+            {/* Left/Right Buttons */}
+            {product.images && product.images.length >= 1 && (
+              <>
+                <button
+                  onClick={() =>
+                    setActiveImage(
+                      (prev) =>
+                        (prev - 1 + product.images.length) %
+                        product.images.length
+                    )
+                  }
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-orange-100"
                 >
-                  <span>View All Products</span>
-                </Link>
-                <a
-                  href="mailto:contact@fieldrichindia.com?subject=Inquiry about ${product.name}"
-                  className="flex-1 inline-flex items-center justify-center gap-2 border-2 border-orange-600 text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-orange-600 hover:text-white transition-all duration-300"
+                  <ChevronLeft className="w-5 h-5 text-orange-600" />
+                </button>
+                <button
+                  onClick={() =>
+                    setActiveImage((prev) => (prev + 1) % product.images.length)
+                  }
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-orange-100"
                 >
-                  <span>Contact Us</span>
-                </a>
-              </div>
-            </motion.div>
+                  <ChevronRight className="w-5 h-5 text-orange-600" />
+                </button>
+              </>
+            )}
           </div>
-        </div>
+
+          {/* THUMBNAILS */}
+          <div className="flex gap-2 mt-4">
+            {product.images?.map((img, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveImage(i)}
+                className={`w-20 h-20 rounded-lg overflow-hidden border-2 ${
+                  i === activeImage ? "border-orange-600" : "border-transparent"
+                }`}
+              >
+                <img src={img} alt="" className="w-full h-full object-cover" />
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* PRODUCT INFO */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-6"
+        >
+          <h1 className="text-4xl font-bold text-gray-800">{product.name}</h1>
+          <p className="text-gray-600 text-lg leading-relaxed">
+            {product.description}
+          </p>
+
+          {/* Features */}
+          <div className="grid gap-3">
+            {[
+              { icon: Leaf, text: "100% Natural & Organic" },
+              { icon: Award, text: "Premium Quality" },
+              { icon: Users, text: "Traditional Processing" },
+            ].map((f, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
+                  <f.icon className="w-4 h-4 text-white" />
+                </div>
+                <span className="text-gray-700">{f.text}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Animated Info Tabs */}
+          <div>
+            <div className="flex gap-4 border-b pb-2">
+              {["overview", "benefits", "details"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`pb-1 font-semibold capitalize ${
+                    activeTab === tab
+                      ? "text-orange-600 border-b-2 border-orange-600"
+                      : "text-gray-500"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-4">
+              <AnimatePresence mode="wait">
+                {activeTab === "overview" && (
+                  <motion.div
+                    key="overview"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <p className="text-gray-700">
+                      Origin: <strong>India</strong> <br />
+                      No Preservatives • Handpicked • Authentic.
+                    </p>
+                  </motion.div>
+                )}
+
+                {activeTab === "benefits" && (
+                  <motion.ul
+                    key="benefits"
+                    className="space-y-2 text-gray-700"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <li className="flex gap-2 items-start">
+                      <Star className="w-4 h-4 text-amber-500" /> Boosts flavor
+                      & aroma
+                    </li>
+                    <li className="flex gap-2 items-start">
+                      <Star className="w-4 h-4 text-amber-500" /> Rich in
+                      antioxidants & nutrients
+                    </li>
+                    <li className="flex gap-2 items-start">
+                      <Star className="w-4 h-4 text-amber-500" /> Perfect for
+                      Indian cuisines
+                    </li>
+                  </motion.ul>
+                )}
+
+                {activeTab === "details" && (
+                  <motion.div
+                    key="details"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-gray-700"
+                  >
+                    <p>
+                      Category: <strong>{product.category}</strong>
+                    </p>
+                    <p>
+                      Processing: <strong>Traditional methods</strong>
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="flex gap-4 pt-4">
+            <Link
+              to="/products"
+              className="flex-1 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-3 rounded-lg shadow hover:shadow-xl transition"
+            >
+              View All Products
+            </Link>
+            <a
+              href={`mailto:contact@fieldrichindia.com?subject=Inquiry about ${product.name}`}
+              className="flex-1 border-2 border-orange-600 text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 hover:text-white transition"
+            >
+              Contact Us
+            </a>
+          </div>
+        </motion.div>
       </section>
     </div>
   );
