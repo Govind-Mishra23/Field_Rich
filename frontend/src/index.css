@@ -18,3 +18,441 @@ html, body {
 * {
   scroll-behavior: auto;
 }
+
+/* Responsive Design System */
+/* Mobile-first approach with progressive enhancement */
+
+/* Base mobile styles (default) */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Small screens (sm) - 640px and up */
+@media (min-width: 640px) {
+  .container-responsive {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Medium screens (md) - 768px and up */
+@media (min-width: 768px) {
+  .container-responsive {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Large screens (lg) - 1024px and up */
+@media (min-width: 1024px) {
+  .container-responsive {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Extra large screens (xl) - 1280px and up */
+@media (min-width: 1280px) {
+  .container-responsive {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* 2XL screens - 1536px and up */
+@media (min-width: 1536px) {
+  .container-responsive {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* Responsive typography scale */
+.text-responsive-xs {
+  font-size: 0.75rem; /* 12px */
+}
+
+.text-responsive-sm {
+  font-size: 0.875rem; /* 14px */
+}
+
+.text-responsive-base {
+  font-size: 1rem; /* 16px */
+}
+
+.text-responsive-lg {
+  font-size: 1.125rem; /* 18px */
+}
+
+.text-responsive-xl {
+  font-size: 1.25rem; /* 20px */
+}
+
+.text-responsive-2xl {
+  font-size: 1.5rem; /* 24px */
+}
+
+.text-responsive-3xl {
+  font-size: 1.875rem; /* 30px */
+}
+
+.text-responsive-4xl {
+  font-size: 2.25rem; /* 36px */
+}
+
+.text-responsive-5xl {
+  font-size: 3rem; /* 48px */
+}
+
+.text-responsive-6xl {
+  font-size: 3.75rem; /* 60px */
+}
+
+.text-responsive-7xl {
+  font-size: 4.5rem; /* 72px */
+}
+
+.text-responsive-8xl {
+  font-size: 6rem; /* 96px */
+}
+
+.text-responsive-9xl {
+  font-size: 8rem; /* 128px */
+}
+
+/* Responsive spacing utilities */
+.space-responsive-xs { margin: 0.5rem; }
+.space-responsive-sm { margin: 1rem; }
+.space-responsive-md { margin: 1.5rem; }
+.space-responsive-lg { margin: 2rem; }
+.space-responsive-xl { margin: 3rem; }
+.space-responsive-2xl { margin: 4rem; }
+
+/* Responsive padding utilities */
+.p-responsive-xs { padding: 0.5rem; }
+.p-responsive-sm { padding: 1rem; }
+.p-responsive-md { padding: 1.5rem; }
+.p-responsive-lg { padding: 2rem; }
+.p-responsive-xl { padding: 3rem; }
+.p-responsive-2xl { padding: 4rem; }
+
+/* Responsive margin utilities */
+.m-responsive-xs { margin: 0.5rem; }
+.m-responsive-sm { margin: 1rem; }
+.m-responsive-md { margin: 1.5rem; }
+.m-responsive-lg { margin: 2rem; }
+.m-responsive-xl { margin: 3rem; }
+.m-responsive-2xl { margin: 4rem; }
+
+/* Responsive grid system */
+.grid-responsive {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid-responsive {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* Responsive flexbox utilities */
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .flex-responsive {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+/* Responsive image handling */
+.img-responsive {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Responsive navigation */
+.nav-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .nav-responsive {
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+/* Responsive card system */
+.card-responsive {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 640px) {
+  .card-responsive {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-responsive {
+    padding: 2rem;
+  }
+}
+
+/* Responsive button system */
+.btn-responsive {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .btn-responsive {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .btn-responsive {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* Responsive section spacing */
+.section-responsive {
+  padding: 3rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-responsive {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-responsive {
+    padding: 5rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-responsive {
+    padding: 6rem 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section-responsive {
+    padding: 7rem 3rem;
+  }
+}
+
+/* Responsive hero section */
+.hero-responsive {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .hero-responsive {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-responsive {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-responsive {
+    padding: 5rem 2.5rem;
+  }
+}
+
+/* Responsive text alignment */
+.text-center-responsive {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .text-center-responsive {
+    text-align: left;
+  }
+}
+
+/* Responsive visibility utilities */
+.hidden-mobile { display: none; }
+.hidden-tablet { display: block; }
+.hidden-desktop { display: block; }
+
+@media (min-width: 640px) {
+  .hidden-mobile { display: block; }
+  .hidden-tablet { display: none; }
+  .hidden-desktop { display: block; }
+}
+
+@media (min-width: 1024px) {
+  .hidden-mobile { display: block; }
+  .hidden-tablet { display: block; }
+  .hidden-desktop { display: none; }
+}
+
+/* Responsive aspect ratios */
+.aspect-responsive {
+  aspect-ratio: 16 / 9;
+}
+
+@media (min-width: 768px) {
+  .aspect-responsive {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* Responsive shadows */
+.shadow-responsive {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .shadow-responsive {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (min-width: 1024px) {
+  .shadow-responsive {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Responsive borders */
+.border-responsive {
+  border-width: 1px;
+}
+
+@media (min-width: 768px) {
+  .border-responsive {
+    border-width: 2px;
+  }
+}
+
+/* Responsive rounded corners */
+.rounded-responsive {
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .rounded-responsive {
+    border-radius: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .rounded-responsive {
+    border-radius: 1.5rem;
+  }
+}
+
+/* Responsive animations */
+.animate-responsive {
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .animate-responsive {
+    transition: all 0.5s ease;
+  }
+}
+
+/* Responsive hover effects */
+.hover-responsive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 768px) {
+  .hover-responsive:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-before: always;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .contrast-high {
+    border-width: 2px;
+    font-weight: bold;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-responsive,
+  .hover-responsive {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+}
