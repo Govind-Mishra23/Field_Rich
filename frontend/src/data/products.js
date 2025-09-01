@@ -1,9 +1,63 @@
+// Box Front Images
 import chillifront from "../assets/boxfront/chillifront_edited.png";
 import dhaniafront from "../assets/boxfront/dhaniafront_edited.png";
 import garamfront from "../assets/boxfront/garamfront_edited.png";
 import jeerafront from "../assets/boxfront/jeerafront_edited.png";
 import pepperfront from "../assets/boxfront/pepperfront_edited.png";
 import turmericfront from "../assets/boxfront/turmericfront_edited.png";
+
+// Box Back Images
+import chilliback from "../assets/boxback/chilli back_edited.png";
+import dhaniaback from "../assets/boxback/dhaniya back_edited.png";
+import garamback from "../assets/boxback/garam back_edited.png";
+import jeeraback from "../assets/boxback/jeeraback.png";
+import pepperback from "../assets/boxback/pepperback_edited.png";
+import turmericback from "../assets/boxback/turmeric back_edited.png";
+
+// Raw Powder Images
+import chillypowder from "../assets/chillypowder.jpg";
+import dhaniyapowder from "../assets/dhaniyapowder.jpeg";
+import garammasala from "../assets/garammasala.jpg";
+import jeerapowder from "../assets/jeerapowder.jpg";
+import pepperpowder from "../assets/pepperpowder.jpg";
+import turmericpowder from "../assets/TurmericPowder.jpg";
+import wholepepper from "../assets/WholePepper.jpg";
+
+// Export all images for easy import in other files
+export const boxFrontImages = {
+  chillifront,
+  dhaniafront,
+  garamfront,
+  jeerafront,
+  pepperfront,
+  turmericfront
+};
+
+export const boxBackImages = {
+  chilliback,
+  dhaniaback,
+  garamback,
+  jeeraback,
+  pepperback,
+  turmericback
+};
+
+export const rawPowderImages = {
+  chillypowder,
+  dhaniyapowder,
+  garammasala,
+  jeerapowder,
+  pepperpowder,
+  turmericpowder,
+  wholepepper
+};
+
+// Export all images together
+export const allImages = {
+  ...boxFrontImages,
+  ...boxBackImages,
+  ...rawPowderImages
+};
 
 export const products = [
   {

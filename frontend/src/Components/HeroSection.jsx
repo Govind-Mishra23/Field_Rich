@@ -13,9 +13,9 @@ export const HeroSection = () => (
     
     <div className="relative z-10 text-center container-responsive">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4, type: 'tween' }}
         className="max-w-4xl mx-auto"
       >
         {/* Responsive typography */}
@@ -34,13 +34,14 @@ export const HeroSection = () => (
         
         {/* Responsive button */}
         <motion.div 
-          whileHover={{ scale: 1.05 }} 
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }} 
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: 'tween', duration: 0.15 }}
           className="px-4"
         >
           <Link
             to="/products"
-            className="btn-responsive inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover-responsive"
+            className="btn-responsive inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-200 hover-responsive"
           >
             <span className="text-sm md:text-base lg:text-lg">View Products</span>
             <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />

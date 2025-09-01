@@ -6,6 +6,7 @@ import { HomePage } from './Pages/HomePage';
 import { ProductsPage } from './Pages/ProductsPage';
 import { ProductDetailPage } from './Pages/ProductDetailPage';
 import { ContactPage } from './Pages/ContactPage';
+import PerformanceMonitor from './Components/PerformanceMonitor';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <PerformanceMonitor />
         </div>
       </Router>
     </ErrorBoundary>

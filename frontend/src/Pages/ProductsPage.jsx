@@ -2,11 +2,68 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
-import { useEffect } from 'react';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import { useEffect, memo } from 'react';
+
+// Memoized ProductCard component for better performance
+const ProductCard = memo(({ product }) => (
+  <motion.div
+    whileHover={{ y: -5 }}
+    className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-orange-100 overflow-hidden"
+  >
+    {/* Product Image */}
+    <div className="h-64 bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center overflow-hidden">
+      {product.imgUrl ? (
+        <img
+          src={product.imgUrl}
+          alt={`${product.name} - Premium Indian Spice`}
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          loading="lazy"
+          onLoad={(e) => {
+            e.target.style.opacity = '1';
+          }}
+          style={{ opacity: 0 }}
+        />
+      ) : (
+        <div className="text-8xl text-orange-300">{product.name.charAt(0)}</div>
+      )}
+    </div>
+    
+    {/* Product Info */}
+    <div className="p-6">
+      <div className="flex items-center justify-between mb-3">
+        <span className="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
+          {product.category}
+        </span>
+      </div>
+      
+      <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
+      <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
+      
+      <Link
+        to={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
+        className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 w-full justify-center"
+      >
+        <span>View Details</span>
+        <ArrowRight className="w-4 h-4" />
+      </Link>
+    </div>
+  </motion.div>
+));
+
+ProductCard.displayName = 'ProductCard';
 
 export const ProductsPage = () => {
+  useScrollToTop();
+
+  // Preload images for faster display
   useEffect(() => {
-    window.scrollTo(0, 0);
+    products.forEach(product => {
+      if (product.imgUrl) {
+        const img = new Image();
+        img.src = product.imgUrl;
+      }
+    });
   }, []);
 
   return (
@@ -23,9 +80,9 @@ export const ProductsPage = () => {
           
           {/* Page Title */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
             className="text-center mb-16"
           >
             <h1 className="text-5xl font-bold text-gray-800 mb-6">Our Product Range</h1>
@@ -51,49 +108,24 @@ export const ProductsPage = () => {
       <section className="pb-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
-              <motion.div
-                key={product.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-orange-100 overflow-hidden"
-              >
-                {/* Product Image */}
-                <div className="h-64 bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
-                  {product.imgUrl ? (
-                    <img
-                      src={product.imgUrl}
-                      alt={product.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="text-8xl">{product.image}</div>
-                  )}
-                </div>
-                
-                {/* Product Info */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
-                      {product.category}
-                    </span>
+            {/* Loading skeleton for better perceived performance */}
+            {products.length === 0 && (
+              <>
+                {[...Array(6)].map((_, index) => (
+                  <div key={index} className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden animate-pulse">
+                    <div className="h-64 bg-gradient-to-br from-amber-100 to-orange-100"></div>
+                    <div className="p-6 space-y-3">
+                      <div className="h-4 bg-orange-100 rounded w-1/3"></div>
+                      <div className="h-6 bg-gray-100 rounded"></div>
+                      <div className="h-4 bg-gray-100 rounded"></div>
+                      <div className="h-10 bg-orange-100 rounded"></div>
+                    </div>
                   </div>
-                  
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
-                  
-                  <Link
-                    to={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 w-full justify-center"
-                  >
-                    <span>View Details</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
+                ))}
+              </>
+            )}
+            {products.map((product) => (
+              <ProductCard key={product.name} product={product} />
             ))}
           </div>
         </div>

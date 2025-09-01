@@ -11,6 +11,7 @@ import {
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 import { useState, useEffect } from "react";
+import { useScrollToTop } from "../hooks/useScrollToTop";
 
 export const ProductDetailPage = () => {
   const { id } = useParams();
@@ -19,8 +20,10 @@ export const ProductDetailPage = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");
 
+  // Use the lightweight scroll-to-top hook
+  useScrollToTop();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
     const productId = id.replace(/-/g, " ");
     const foundProduct = products.find(
       (p) => p.name.toLowerCase() === productId.toLowerCase()
@@ -59,9 +62,9 @@ export const ProductDetailPage = () => {
       <section className="pb-20 px-6 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
         {/* IMAGE GALLERY */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4, type: 'tween' }}
           className="flex flex-col items-center"
         >
           <div className="relative w-full h-[450px] bg-white p-6 rounded-2xl shadow-lg">
@@ -74,7 +77,7 @@ export const ProductDetailPage = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3, type: 'tween' }}
               />
             </AnimatePresence>
 
@@ -123,9 +126,9 @@ export const ProductDetailPage = () => {
 
         {/* PRODUCT INFO */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4, type: 'tween' }}
           className="space-y-6"
         >
           <h1 className="text-4xl font-bold text-gray-800">{product.name}</h1>

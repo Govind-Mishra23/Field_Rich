@@ -1,9 +1,23 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { products } from '../data/products';
+import { products, rawPowderImages } from '../data/products';
 
 export const RawSpiceShowcase = () => {
   const [hasAnimated, setHasAnimated] = useState(false);
+
+  // Map products to their corresponding raw images
+  const getRawImageForProduct = (productName) => {
+    const imageMap = {
+      'Dhaniya Powder': rawPowderImages.dhaniyapowder,
+      'Whole Pepper': rawPowderImages.wholepepper,
+      'Turmeric Powder': rawPowderImages.turmericpowder,
+      'Chilly Powder': rawPowderImages.chillypowder,
+      'Jeera Powder': rawPowderImages.jeerapowder,
+      'Garam Masala': rawPowderImages.garammasala,
+      'Pepper Powder': rawPowderImages.pepperpowder
+    };
+    return imageMap[productName]; // Return the raw image if found, undefined if not found
+  };
 
   // Calculate grid positions for 3x2 layout (6 products)
   const getGridPosition = (index) => {
@@ -41,6 +55,16 @@ export const RawSpiceShowcase = () => {
           <div className="relative w-full h-full">
             {products.slice(0, 6).map((product, index) => {
               const gridPos = getGridPosition(index);
+              // Use raw images directly based on index for testing
+              const rawImages = [
+                rawPowderImages.dhaniyapowder,
+                rawPowderImages.wholepepper,
+                rawPowderImages.turmericpowder,
+                rawPowderImages.chillypowder,
+                rawPowderImages.jeerapowder,
+                rawPowderImages.garammasala
+              ];
+              const rawImage = rawImages[index];
               
               return (
                 <motion.div
@@ -62,8 +86,8 @@ export const RawSpiceShowcase = () => {
                   }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{
-                    duration: 0.8,
-                    delay: index * 0.08,
+                    duration: 0.4,
+                    delay: index * 0.03,
                     ease: "easeOut"
                   }}
                   onAnimationComplete={() => {
@@ -76,32 +100,38 @@ export const RawSpiceShowcase = () => {
                     className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl cursor-pointer"
                     style={{ width: '280px', height: '280px' }}
                     whileHover={{ 
-                      y: -5, 
-                      scale: 1.02,
-                      rotateY: 2,
-                      rotateX: 2
+                      y: -3, 
+                      scale: 1.01,
+                      rotateY: 1,
+                      rotateX: 1
                     }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
                     onAnimationComplete={() => {
                       if (index === 5 && !hasAnimated) {
                         setHasAnimated(true);
                       }
                     }}
                   >
-                    {/* Card background with image */}
+                    {/* Card background with raw image */}
                     <div className="w-full h-full relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/20 to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10"></div>
                       
-                      {product.imgUrl ? (
+                      {rawImage ? (
+                        <img
+                          src={rawImage}
+                          alt={`Raw ${product.name}`}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            console.log('Raw image failed to load:', rawImage);
+                            e.target.src = product.imgUrl; // Fallback to original image
+                          }}
+                        />
+                      ) : (
                         <img
                           src={product.imgUrl}
                           alt={product.name}
                           className="w-full h-full object-cover"
                         />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-amber-100 to-orange-200 flex items-center justify-center">
-                          <div className="text-8xl">{product.image}</div>
-                        </div>
                       )}
                     </div>
 
@@ -111,9 +141,9 @@ export const RawSpiceShowcase = () => {
                     >
                       <div className="text-white">
                         <span className="inline-block bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded-full mb-2">
-                          {product.category}
+                          Raw {product.category}
                         </span>
-                        <h3 className="text-lg font-bold mb-1">{product.name}</h3>
+                        <h3 className="text-lg font-bold mb-1">Raw {product.name}</h3>
                         <p className="text-sm text-orange-200">Premium Quality</p>
                       </div>
                     </div>
