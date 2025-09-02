@@ -1,12 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ErrorBoundary from './Components/ErrorBoundary';
-import Navbar from './Components/Navbar';
-import { Footer } from './Components/Footer';
-import { HomePage } from './Pages/HomePage';
-import { ProductsPage } from './Pages/ProductsPage';
-import { ProductDetailPage } from './Pages/ProductDetailPage';
-import { ContactPage } from './Pages/ContactPage';
-import PerformanceMonitor from './Components/PerformanceMonitor';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ErrorBoundary from "./Components/ErrorBoundary";
+import Navbar from "./Components/Navbar";
+import { Footer } from "./Components/Footer";
+import { HomePage } from "./Pages/HomePage";
+import { ProductsPage } from "./Pages/ProductsPage";
+import { ProductDetailPage } from "./Pages/ProductDetailPage";
+import { ContactPage } from "./Pages/ContactPage";
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
             </Routes>
           </main>
           <Footer />
-          <PerformanceMonitor />
         </div>
       </Router>
     </ErrorBoundary>

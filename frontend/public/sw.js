@@ -30,6 +30,18 @@ self.addEventListener('install', (event) => {
 
 // Fetch event - serve from cache when offline
 self.addEventListener('fetch', (event) => {
+  // Only handle http/https requests, skip chrome-extension and other protocols
+  if (!event.request.url.startsWith('http')) {
+    return;
+  }
+
+  // Skip caching for extension URLs
+  if (event.request.url.includes('chrome-extension://') || 
+      event.request.url.includes('moz-extension://') ||
+      event.request.url.includes('safari-extension://')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
@@ -44,6 +56,11 @@ self.addEventListener('fetch', (event) => {
         return fetch(fetchRequest).then((response) => {
           // Check if we received a valid response
           if (!response || response.status !== 200 || response.type !== 'basic') {
+            return response;
+          }
+          
+          // Only cache http/https responses
+          if (!event.request.url.startsWith('http')) {
             return response;
           }
           

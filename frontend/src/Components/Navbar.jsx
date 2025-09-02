@@ -12,16 +12,18 @@ const navLinks = [
 const Navbar = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activePath, setActivePath] = useState('/');
+  const [activePath, setActivePath] = useState("/");
 
   // Set the active path based on location for the animated indicator
   useEffect(() => {
     const currentPath = location.pathname;
-    if (currentPath === '/') {
-      setActivePath('/');
+    if (currentPath === "/") {
+      setActivePath("/");
     } else {
-      const foundLink = navLinks.find(link => currentPath.startsWith(link.path) && link.path !== '/');
-      setActivePath(foundLink ? foundLink.path : '/');
+      const foundLink = navLinks.find(
+        (link) => currentPath.startsWith(link.path) && link.path !== "/"
+      );
+      setActivePath(foundLink ? foundLink.path : "/");
     }
   }, [location.pathname]);
 
@@ -29,10 +31,21 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Removed body scroll lock to avoid page content being hidden on mobile
+  useEffect(() => {}, [isMobileMenuOpen]);
+
   const menuVariants = {
     hidden: { opacity: 0, x: "100%" },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeOut" } },
-    exit: { opacity: 0, x: "100%", transition: { duration: 0.3, ease: "easeIn" } },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
+    exit: {
+      opacity: 0,
+      x: "100%",
+      transition: { duration: 0.3, ease: "easeIn" },
+    },
   };
 
   const navItemVariants = {
@@ -42,7 +55,7 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      className="fixed top-0 w-full bg-gradient-to-r from-amber-50 via-red-50 to-orange-50 backdrop-blur-sm z-50 shadow-responsive overflow-hidden"
+      className="fixed top-0 w-full bg-gradient-to-r from-amber-50 via-red-50 to-orange-50 backdrop-blur-sm z-50 overflow-visible"
       initial={{ backgroundPosition: "0% 50%" }}
       animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
       transition={{
@@ -51,10 +64,10 @@ const Navbar = () => {
         repeat: Infinity,
         repeatType: "loop",
       }}
-      style={{ backgroundSize: '200% 100%' }} // Make gradient larger than the nav for movement
+      style={{ backgroundSize: "200% 100%" }} // Make gradient larger than the nav for movement
     >
-      <div className="container-responsive">
-        <div className="flex justify-between items-center h-14 sm:h-16 lg:h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-12 sm:h-14 lg:h-16">
           {/* Logo & Brand Name */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -65,7 +78,9 @@ const Navbar = () => {
           >
             <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
               <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-amber-600 to-red-700 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm sm:text-lg lg:text-xl">FR</span>
+                <span className="text-white font-bold text-sm sm:text-lg lg:text-xl">
+                  FR
+                </span>
               </div>
               <span className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-extrabold text-red-800 tracking-wider font-serif">
                 <span className="hidden sm:inline">FIELD RICH</span>
@@ -75,7 +90,7 @@ const Navbar = () => {
           </motion.div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-10 relative">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-8 relative">
             {navLinks.map((link) => (
               <motion.div
                 key={link.name}
@@ -88,7 +103,9 @@ const Navbar = () => {
                 <Link
                   to={link.path}
                   className={`relative text-base lg:text-lg xl:text-xl font-medium py-1 px-2 z-10 block transition-colors duration-300 ${
-                    activePath === link.path ? "text-red-700" : "text-stone-700 hover:text-red-700"
+                    activePath === link.path
+                      ? "text-red-700"
+                      : "text-stone-700 hover:text-red-700"
                   }`}
                 >
                   {link.name}
@@ -99,7 +116,7 @@ const Navbar = () => {
                     layoutId="underline"
                     className="absolute bottom-0 left-0 w-full h-[2px] sm:h-[3px] bg-red-700 rounded-full z-0"
                     initial={{ rotate: -10 }} // Starts tilted up
-                    animate={{ rotate: 0 }}   // Animates to flat (0 degrees)
+                    animate={{ rotate: 0 }} // Animates to flat (0 degrees)
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
@@ -123,13 +140,17 @@ const Navbar = () => {
               className="text-stone-700 hover:text-red-700 p-2"
               aria-label="Toggle mobile menu"
             >
-              {isMobileMenuOpen ? <X size={24} className="sm:w-7 sm:h-7" /> : <Menu size={24} className="sm:w-7 sm:h-7" />}
+              {isMobileMenuOpen ? (
+                <X size={24} className="sm:w-7 sm:h-7" />
+              ) : (
+                <Menu size={24} className="sm:w-7 sm:h-7" />
+              )}
             </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Dropdown (mobile) */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -137,18 +158,28 @@ const Navbar = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden fixed inset-0 bg-amber-50/95 backdrop-blur-md flex flex-col items-center justify-center space-y-6 sm:space-y-8 pt-16 z-40"
+            className="md:hidden absolute left-0 right-0 top-full bg-amber-50/95 backdrop-blur-md flex flex-col items-start justify-start gap-4 sm:gap-6 py-4 px-6 shadow-lg border-t border-amber-100 max-h-[calc(100dvh-4rem)] overflow-y-auto z-[60]"
+            role="dialog"
+            aria-modal="true"
           >
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.name}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0, transition: { delay: 0.1 + index * 0.1 } }}
-                exit={{ opacity: 0, y: -50 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: 0.05 + index * 0.06 },
+                }}
+                exit={{ opacity: 0, y: -20 }}
+                className="w-full"
               >
                 <Link
                   to={link.path}
-                  className={`text-2xl sm:text-3xl lg:text-4xl font-bold ${activePath === link.path ? "text-red-700" : "text-stone-800 hover:text-red-700"
+                  className={`block w-full text-lg sm:text-xl font-semibold py-3 ${
+                    activePath === link.path
+                      ? "text-red-700"
+                      : "text-stone-800 hover:text-red-700"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
