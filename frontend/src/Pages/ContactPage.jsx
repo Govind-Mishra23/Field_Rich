@@ -76,7 +76,7 @@ export const ContactPage = () => {
       icon: MapPin,
       title: "Office Address",
       value:
-        "No.227 , Rajya Post Office , Gulzarganj, Dist. Jaunpur, Uttar Pradesh - 222135",
+        "No.227 , Raiya Post Office , Gulzarganj, Dist. Jaunpur, Uttar Pradesh - 222135",
       subtitle: "Main Distribution Center",
       color: "from-orange-500 to-orange-600",
       action: "https://www.google.com/maps?q=25.7465,82.7015",
