@@ -345,7 +345,7 @@ export const ContactPage = () => {
                 <p className="text-gray-600 text-center mt-6">
                   <strong>Field Rich Spices</strong>
                   <br />
-                  No.227 , Rajya Post Office , Gulzarganj, Dist. Jaunpur, Uttar
+                  No.227 , Raiya Post Office , Gulzarganj, Dist. Jaunpur, Uttar
                   Pradesh - 222135
                   <br />
                   Main Distribution Center
