@@ -107,9 +107,9 @@ export const Footer = () => {
           viewport={{ once: true }}
           className="border-t border-orange-600 pt-8 text-center"
         >
-          {/* <p className="text-orange-200">
+          <p className="text-orange-200">
             © 2025 FIELD RICH. All rights reserved. | Premium Indian Spices
-          </p> */}
+          </p>
         </motion.div>
       </div>
     </footer>

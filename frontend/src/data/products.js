@@ -1,27 +1,26 @@
-// Box Front Images
-import chillifront from "../assets/boxfront/chillifront_edited.png";
-import dhaniafront from "../assets/boxfront/dhaniafront_edited.png";
-import garamfront from "../assets/boxfront/garamfront_edited.png";
-import jeerafront from "../assets/boxfront/jeerafront_edited.png";
-import pepperfront from "../assets/boxfront/pepperfront_edited.png";
-import turmericfront from "../assets/boxfront/turmericfront_edited.png";
+// Packet 100g Images (front/back)
+import chillifront from "../assets/packets/100g/chilli.front-100g.png";
+import dhaniafront from "../assets/packets/100g/dhaniya.front-100g.png";
+import garamfront from "../assets/packets/100g/garam.front-100g.png";
+import jeerafront from "../assets/packets/100g/jeera.front-100g.png";
+import pepperfront from "../assets/packets/100g/pepper.front-100g.png";
+import turmericfront from "../assets/packets/100g/turmeric.front-100g.png";
 
-// Box Back Images
-import chilliback from "../assets/boxback/chilli back_edited.png";
-import dhaniaback from "../assets/boxback/dhaniya back_edited.png";
-import garamback from "../assets/boxback/garam back_edited.png";
-import jeeraback from "../assets/boxback/jeeraback.png";
-import pepperback from "../assets/boxback/pepperback_edited.png";
-import turmericback from "../assets/boxback/turmeric back_edited.png";
+import chilliback from "../assets/packets/100g/chilli.back-100g.png";
+import dhaniaback from "../assets/packets/100g/dhaniya.back-100g.png";
+import garamback from "../assets/packets/100g/garam.back-100g.png";
+import jeeraback from "../assets/packets/100g/jeera.back-100g.png";
+import pepperback from "../assets/packets/100g/pepper.back-100g.png";
+import turmericback from "../assets/packets/100g/turmeric.back-100g.png";
 
 // Raw Powder Images
-import chillypowder from "../assets/chillypowder.jpg";
-import dhaniyapowder from "../assets/dhaniyapowder.jpeg";
-import garammasala from "../assets/garammasala.jpg";
-import jeerapowder from "../assets/jeerapowder.jpg";
-import pepperpowder from "../assets/pepperpowder.jpg";
-import turmericpowder from "../assets/TurmericPowder.jpg";
-import wholepepper from "../assets/WholePepper.jpg";
+import chillypowder from "../assets/raw/chillypowder.jpg";
+import dhaniyapowder from "../assets/raw/dhaniyapowder.jpeg";
+import garammasala from "../assets/raw/garammasala.jpg";
+import jeerapowder from "../assets/raw/jeerapowder.jpg";
+import pepperpowder from "../assets/raw/pepperpowder.jpg";
+import turmericpowder from "../assets/raw/TurmericPowder.jpg";
+import wholepepper from "../assets/raw/WholePepper.jpg";
 
 export const boxFrontImages = {
   chillifront,
