@@ -23,7 +23,6 @@ import pepperpowder from "../assets/pepperpowder.jpg";
 import turmericpowder from "../assets/TurmericPowder.jpg";
 import wholepepper from "../assets/WholePepper.jpg";
 
-// Export all images for easy import in other files
 export const boxFrontImages = {
   chillifront,
   dhaniafront,
