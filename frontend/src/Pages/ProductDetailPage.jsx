@@ -64,7 +64,7 @@ export const ProductDetailPage = () => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4, type: 'tween' }}
+          transition={{ duration: 0.4, type: "tween" }}
           className="flex flex-col items-center"
         >
           <div className="relative w-full h-[450px] bg-white p-6 rounded-2xl shadow-lg">
@@ -72,17 +72,24 @@ export const ProductDetailPage = () => {
               <motion.img
                 key={activeImage}
                 src={product.images?.[activeImage] || product.imgUrl}
-                alt={product.name}
+                alt={`${product.name} - Image ${activeImage + 1}`}
                 className="w-full h-full object-cover rounded-xl"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3, type: 'tween' }}
+                transition={{ duration: 0.3, type: "tween" }}
               />
             </AnimatePresence>
 
+            {/* Image Counter */}
+            {product.images && product.images.length > 1 && (
+              <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                {activeImage + 1} / {product.images.length}
+              </div>
+            )}
+
             {/* Left/Right Buttons */}
-            {product.images && product.images.length >= 1 && (
+            {product.images && product.images.length > 1 && (
               <>
                 <button
                   onClick={() =>
@@ -92,7 +99,7 @@ export const ProductDetailPage = () => {
                         product.images.length
                     )
                   }
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-orange-100"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-orange-100 transition-all duration-200 hover:scale-110"
                 >
                   <ChevronLeft className="w-5 h-5 text-orange-600" />
                 </button>
@@ -100,7 +107,7 @@ export const ProductDetailPage = () => {
                   onClick={() =>
                     setActiveImage((prev) => (prev + 1) % product.images.length)
                   }
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-orange-100"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-orange-100 transition-all duration-200 hover:scale-110"
                 >
                   <ChevronRight className="w-5 h-5 text-orange-600" />
                 </button>
@@ -109,26 +116,47 @@ export const ProductDetailPage = () => {
           </div>
 
           {/* THUMBNAILS */}
-          <div className="flex gap-2 mt-4">
-            {product.images?.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveImage(i)}
-                className={`w-20 h-20 rounded-lg overflow-hidden border-2 ${
-                  i === activeImage ? "border-orange-600" : "border-transparent"
-                }`}
-              >
-                <img src={img} alt="" className="w-full h-full object-cover" />
-              </button>
-            ))}
-          </div>
+          {product.images && product.images.length > 1 && (
+            <div className="flex gap-3 mt-6 overflow-x-auto pb-2 w-full justify-center">
+              {product.images.map((img, i) => (
+                <motion.button
+                  key={i}
+                  onClick={() => setActiveImage(i)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-3 transition-all duration-200 ${
+                    i === activeImage
+                      ? "border-orange-600 shadow-lg ring-2 ring-orange-200"
+                      : "border-gray-200 hover:border-orange-400"
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt={`${product.name} view ${i + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </motion.button>
+              ))}
+            </div>
+          )}
+
+          {/* Image Labels */}
+          {product.images && product.images.length > 1 && (
+            <div className="mt-3 text-center">
+              <p className="text-sm text-gray-600">
+                {activeImage === 0 && "Package Front"}
+                {activeImage === 1 && "Package Back"}
+                {activeImage === 2 && "Product"}
+              </p>
+            </div>
+          )}
         </motion.div>
 
         {/* PRODUCT INFO */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4, type: 'tween' }}
+          transition={{ duration: 0.4, type: "tween" }}
           className="space-y-6"
         >
           <h1 className="text-4xl font-bold text-gray-800">{product.name}</h1>

@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Instagram,
+  Facebook,
+  Twitter,
+} from "lucide-react";
+import fieldRichLogo from "../assets/Field Rich_Logo_v2.jpg";
 
 export const Footer = () => {
   return (
@@ -15,15 +23,22 @@ export const Footer = () => {
             className="md:col-span-2"
           >
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                <span className="text-red-800 font-bold text-xl">FR</span>
+              <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center">
+                <img
+                  src={fieldRichLogo}
+                  alt="Field Rich Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-3xl font-bold">FIELD RICH</span>
             </div>
-            <p className="text-xl mb-4 italic">"Harvested From Nature's Best!"</p>
+            <p className="text-xl mb-4 italic">
+              "Harvested From Nature's Best!"
+            </p>
             <p className="text-orange-200 leading-relaxed">
-              Bringing authentic Indian spices to your table with love and tradition. 
-              Our commitment to quality ensures every spice tells a story of nature's finest offerings.
+              Bringing authentic Indian spices to your table with love and
+              tradition. Our commitment to quality ensures every spice tells a
+              story of nature's finest offerings.
             </p>
           </motion.div>
 
@@ -36,7 +51,7 @@ export const Footer = () => {
           >
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <div className="space-y-3">
-              <a 
+              <a
                 href="mailto:contact@fieldrichindia.com"
                 className="flex items-center gap-3 text-orange-200 hover:text-white transition-colors"
               >
@@ -49,7 +64,10 @@ export const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-orange-200">
                 <MapPin className="w-4 h-4" />
-                <span>No.227 , Rajya Post Office , Gulzarganj, Dist. Jaunpur, Uttar Pradesh - 222135</span>
+                <span>
+                  No.227 , Rajya Post Office , Gulzarganj, Dist. Jaunpur, Uttar
+                  Pradesh - 222135
+                </span>
               </div>
             </div>
           </motion.div>
@@ -66,7 +84,7 @@ export const Footer = () => {
               {[
                 { icon: Instagram, href: "#", label: "Instagram" },
                 { icon: Facebook, href: "#", label: "Facebook" },
-                { icon: Twitter, href: "#", label: "Twitter" }
+                { icon: Twitter, href: "#", label: "Twitter" },
               ].map((social, index) => (
                 <a
                   key={index}
@@ -89,9 +107,9 @@ export const Footer = () => {
           viewport={{ once: true }}
           className="border-t border-orange-600 pt-8 text-center"
         >
-          <p className="text-orange-200">
+          {/* <p className="text-orange-200">
             © 2025 FIELD RICH. All rights reserved. | Premium Indian Spices
-          </p>
+          </p> */}
         </motion.div>
       </div>
     </footer>

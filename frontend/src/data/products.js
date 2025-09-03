@@ -63,7 +63,8 @@ export const products = [
   {
     name: "Dhaniya Powder",
     description: "Traditional blend of warming spices with authentic coriander flavor, perfect for curries and marinades",
-  imgUrl: dhaniafront,
+    imgUrl: dhaniafront,
+    images: [dhaniafront, dhaniaback, dhaniyapowder],
     category: "Signature Blend",
     origin: "Rajasthan, India",
     processing: "Traditional stone grinding",
@@ -72,7 +73,8 @@ export const products = [
   {
     name: "Whole Pepper",
     description: "Premium black peppercorns with intense heat and aromatic flavor, essential for any spice collection",
-  imgUrl: pepperfront,
+    imgUrl: pepperfront,
+    images: [pepperfront, pepperback, wholepepper],
     category: "Signature Blend",
     origin: "Kerala, India",
     processing: "Sun-dried and hand-sorted",
@@ -81,7 +83,8 @@ export const products = [
   {
     name: "Turmeric Powder",
     description: "Pure and potent golden spice with anti-inflammatory properties, the cornerstone of Indian cooking",
-  imgUrl: turmericfront,
+    imgUrl: turmericfront,
+    images: [turmericfront, turmericback, turmericpowder],
     category: "Regional Specialty",
     origin: "Tamil Nadu, India",
     processing: "Traditional grinding",
@@ -90,7 +93,8 @@ export const products = [
   {
     name: "Chilly Powder",
     description: "Perfect heat for every dish with balanced spiciness and rich red color from premium red chilies",
-  imgUrl: chillifront,
+    imgUrl: chillifront,
+    images: [chillifront, chilliback, chillypowder],
     category: "Regional Specialty",
     origin: "Andhra Pradesh, India",
     processing: "Sun-dried and ground",
@@ -99,7 +103,8 @@ export const products = [
   {
     name: "Jeera Powder",
     description: "Authentic South Indian blend with warm, earthy cumin flavor, essential for rice dishes and curries",
-  imgUrl: jeerafront,
+    imgUrl: jeerafront,
+    images: [jeerafront, jeeraback, jeerapowder],
     category: "Regional Specialty",
     origin: "Gujarat, India",
     processing: "Traditional roasting",
@@ -108,7 +113,8 @@ export const products = [
   {
     name: "Garam Masala",
     description: "Complex blend of warming spices including cardamom, cinnamon, and cloves for authentic Indian cuisine",
-  imgUrl: garamfront,
+    imgUrl: garamfront,
+    images: [garamfront, garamback, garammasala],
     category: "Custom Blend",
     origin: "North India",
     processing: "Custom blending",
@@ -117,7 +123,8 @@ export const products = [
   {
     name: "Pepper Powder",
     description: "Finely ground black pepper with intense heat and aromatic flavor, perfect for seasoning and cooking",
-  imgUrl: pepperfront,
+    imgUrl: pepperfront,
+    images: [pepperfront, pepperback, pepperpowder],
     category: "Custom Blend",
     origin: "Kerala, India",
     processing: "Fine grinding",

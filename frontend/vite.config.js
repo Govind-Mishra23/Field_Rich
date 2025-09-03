@@ -34,7 +34,7 @@ export default defineConfig({
   },
   server: {
     // Development server options
-    port: 3000,
+    port: 3004,
     open: true,
     cors: true,
   },

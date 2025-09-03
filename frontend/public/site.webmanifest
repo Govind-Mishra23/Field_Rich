@@ -12,31 +12,31 @@
   "categories": ["food", "shopping", "lifestyle"],
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "/favicon.jpg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "maskable any"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "/favicon.jpg",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "maskable any"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/favicon.jpg",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
-      "src": "/favicon-32x32.png",
+      "src": "/favicon.jpg",
       "sizes": "32x32",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
-      "src": "/favicon-16x16.png",
+      "src": "/favicon.jpg",
       "sizes": "16x16",
-      "type": "image/png"
+      "type": "image/jpeg"
     }
   ],
   "shortcuts": [
@@ -47,7 +47,7 @@
       "url": "/products",
       "icons": [
         {
-          "src": "/icon-96x96.png",
+          "src": "/favicon.jpg",
           "sizes": "96x96"
         }
       ]
@@ -59,7 +59,7 @@
       "url": "/cart",
       "icons": [
         {
-          "src": "/icon-96x96.png",
+          "src": "/favicon.jpg",
           "sizes": "96x96"
         }
       ]
@@ -71,7 +71,7 @@
       "url": "/contact",
       "icons": [
         {
-          "src": "/icon-96x96.png",
+          "src": "/favicon.jpg",
           "sizes": "96x96"
         }
       ]

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Removed ShoppingCart import
+import fieldRichLogo from "../assets/Field Rich_Logo_v2.jpg";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -77,14 +78,14 @@ const Navbar = () => {
             className="flex items-center space-x-2 sm:space-x-3 cursor-pointer"
           >
             <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-amber-600 to-red-700 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm sm:text-lg lg:text-xl">
-                  FR
-                </span>
-              </div>
+              <img
+                src={fieldRichLogo}
+                alt="Field Rich Logo"
+                className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 object-contain"
+              />
               <span className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-extrabold text-red-800 tracking-wider font-serif">
                 <span className="hidden sm:inline">FIELD RICH</span>
-                <span className="sm:hidden">FR</span>
+                <span className="sm:hidden">FIELD RICH</span>
               </span>
             </Link>
           </motion.div>
