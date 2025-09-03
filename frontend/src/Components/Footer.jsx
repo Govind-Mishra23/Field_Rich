@@ -65,7 +65,7 @@ export const Footer = () => {
               <div className="flex items-center gap-3 text-orange-200">
                 <MapPin className="w-4 h-4" />
                 <span>
-                  No.227 , Rajya Post Office , Gulzarganj, Dist. Jaunpur, Uttar
+                  No.227 , Raiya Post Office , Gulzarganj, Dist. Jaunpur, Uttar
                   Pradesh - 222135
                 </span>
               </div>
