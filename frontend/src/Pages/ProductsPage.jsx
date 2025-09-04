@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { products } from '../data/products';
-import { useScrollToTop } from '../hooks/useScrollToTop';
-import { useEffect, memo } from 'react';
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+import { products } from "../data/products";
+import { useScrollToTop } from "../hooks/useScrollToTop";
+import { useEffect, memo } from "react";
 
 // Memoized ProductCard component for better performance
 const ProductCard = memo(({ product }) => (
@@ -11,54 +11,53 @@ const ProductCard = memo(({ product }) => (
     whileHover={{ y: -5 }}
     className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-orange-100 overflow-hidden"
   >
-    {/* Product Image */}
-    <div className="h-64 bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center overflow-hidden">
-      {product.imgUrl ? (
-        <img
-          src={product.imgUrl}
-          alt={`${product.name} - Premium Indian Spice`}
-          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-          loading="lazy"
-          onLoad={(e) => {
-            e.target.style.opacity = '1';
-          }}
-          style={{ opacity: 0 }}
-        />
-      ) : (
-        <div className="text-8xl text-orange-300">{product.name.charAt(0)}</div>
-      )}
-    </div>
-    
-    {/* Product Info */}
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-3">
-        <span className="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
-          {product.category}
-        </span>
+    <Link
+      to={`/products/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
+      className="block"
+    >
+      {/* Product Image */}
+      <div className="h-64 bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center overflow-hidden">
+        {product.imgUrl ? (
+          <img
+            src={product.imgUrl}
+            alt={`${product.name} - Premium Indian Spice`}
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            loading="lazy"
+            onLoad={(e) => {
+              e.target.style.opacity = "1";
+            }}
+            style={{ opacity: 0 }}
+          />
+        ) : (
+          <div className="text-8xl text-orange-300">
+            {product.name.charAt(0)}
+          </div>
+        )}
       </div>
-      
-      <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
-      <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
-      
-      <Link
-        to={`/products/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
-        className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 w-full justify-center"
-      >
-        <span>View Details</span>
-        <ArrowRight className="w-4 h-4" />
-      </Link>
-    </div>
+
+      {/* Product Info */}
+      <div className="p-6">
+        <div className="flex items-center justify-between mb-3">
+          <span className="inline-block bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
+            {product.category}
+          </span>
+        </div>
+
+        <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
+        <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
+      </div>
+    </Link>
   </motion.div>
 ));
 
-ProductCard.displayName = 'ProductCard';
+ProductCard.displayName = "ProductCard";
 
 export const ProductsPage = () => {
   useScrollToTop();
 
   // Preload images for faster display
   useEffect(() => {
-    products.forEach(product => {
+    products.forEach((product) => {
       if (product.imgUrl) {
         const img = new Image();
         img.src = product.imgUrl;
@@ -73,11 +72,13 @@ export const ProductsPage = () => {
         <div className="max-w-6xl mx-auto">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-            <Link to="/" className="hover:text-orange-600 transition-colors">Home</Link>
+            <Link to="/" className="hover:text-orange-600 transition-colors">
+              Home
+            </Link>
             <span>/</span>
             <span className="text-gray-800 font-medium">Products</span>
           </nav>
-          
+
           {/* Page Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -85,12 +86,16 @@ export const ProductsPage = () => {
             transition={{ duration: 0.4 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl font-bold text-gray-800 mb-6">Our Product Range</h1>
+            <h1 className="text-5xl font-bold text-gray-800 mb-6">
+              Our Product Range
+            </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover our premium collection of authentic Indian spices, carefully sourced and processed to bring nature's finest flavors to your kitchen
+              Discover our premium collection of authentic Indian spices,
+              carefully sourced and processed to bring nature's finest flavors
+              to your kitchen
             </p>
           </motion.div>
-          
+
           {/* Back to Home */}
           <div className="text-center mb-12">
             <Link
@@ -112,7 +117,10 @@ export const ProductsPage = () => {
             {products.length === 0 && (
               <>
                 {[...Array(6)].map((_, index) => (
-                  <div key={index} className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden animate-pulse">
+                  <div
+                    key={index}
+                    className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden animate-pulse"
+                  >
                     <div className="h-64 bg-gradient-to-br from-amber-100 to-orange-100"></div>
                     <div className="p-6 space-y-3">
                       <div className="h-4 bg-orange-100 rounded w-1/3"></div>

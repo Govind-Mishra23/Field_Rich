@@ -4,7 +4,6 @@ import { ProblemSection } from "../Components/ProblemSection";
 import { SolutionSection } from "../Components/SolutionSection";
 import { ProductRangePreview } from "../Components/ProductRangePreview";
 import { RawSpiceShowcase } from "../Components/RawSpiceShowcase";
-import { AboutUsSection } from "../Components/AboutUsSection";
 import { ContactSection } from "../Components/ContactSection";
 import { useScrollToTop } from "../hooks/useScrollToTop";
 
@@ -16,11 +15,10 @@ export const HomePage = () => {
       {/* Responsive container wrapper for consistent spacing */}
       <div className="w-full max-w-7xl mx-auto">
         <HeroSection />
-        <ProblemSection />
-        <SolutionSection />
+        {/* <ProblemSection /> */}
         <ProductRangePreview />
         <RawSpiceShowcase />
-        <AboutUsSection />
+        <SolutionSection />
         <ContactSection />
       </div>
     </div>

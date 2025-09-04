@@ -7,6 +7,7 @@ import fieldRichLogo from "../assets/Field Rich_Logo_v2.jpg";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Shop All", path: "/products" },
+  { name: "About Us", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];
 
