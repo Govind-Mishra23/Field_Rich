@@ -2,16 +2,10 @@ const CACHE_NAME = 'field-rich-v1.0.0';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/src/main.jsx',
-  '/src/App.jsx',
-  '/src/index.css',
-  '/src/assets/chillypowder.jpg',
-  '/src/assets/dhaniyapowder.jpeg',
-  '/src/assets/garammasala.jpg',
-  '/src/assets/jeerapowder.jpg',
-  '/src/assets/pepperpowder.jpg',
-  '/src/assets/TurmericPowder.jpg',
-  '/src/assets/WholePepper.jpg'
+  '/src/assets/Field Rich_Logo_v2.jpg',
+  '/src/assets/Banners/1.png',
+  '/src/assets/Banners/2.png',
+  '/src/assets/Banners/3.png'
 ];
 
 // Install event - cache resources

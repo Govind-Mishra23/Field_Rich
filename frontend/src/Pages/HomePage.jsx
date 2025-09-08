@@ -11,11 +11,12 @@ export const HomePage = () => {
   useScrollToTop();
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden">
-      {/* Responsive container wrapper for consistent spacing */}
+    <div className="w-full overflow-x-hidden">
+      {/* Hero Section - Full Screen */}
+      <HeroSection />
+
+      {/* Other sections with responsive container */}
       <div className="w-full max-w-7xl mx-auto">
-        <HeroSection />
-        {/* <ProblemSection /> */}
         <ProductRangePreview />
         <RawSpiceShowcase />
         <SolutionSection />
