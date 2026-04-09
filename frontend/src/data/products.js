@@ -14,7 +14,7 @@ import pepperback from "../assets/packets/100g/pepper.back-100g.png";
 import turmericback from "../assets/packets/100g/turmeric.back-100g.png";
 
 // Raw Powder Images
-import chillypowder from "../assets/raw/chillypowder.jpg";
+import Chillipowder from "../assets/raw/Chillipowder.jpg";
 import dhaniyapowder from "../assets/raw/dhaniyapowder.jpeg";
 import garammasala from "../assets/raw/garammasala.jpg";
 import jeerapowder from "../assets/raw/jeerapowder.jpg";
@@ -41,7 +41,7 @@ export const boxBackImages = {
 };
 
 export const rawPowderImages = {
-  chillypowder,
+  Chillipowder,
   dhaniyapowder,
   garammasala,
   jeerapowder,
@@ -126,10 +126,10 @@ export const products = [
   },
   {
     id: 4,
-    name: "Chilly Powder",
+    name: "Chilli Powder",
     description: "Perfect heat for every dish with balanced spiciness and rich red color from premium red chilies",
     imgUrl: chillifront,
-    images: [chillifront, chilliback, chillypowder],
+    images: [chillifront, chilliback, Chillipowder],
     category: "Regional Specialty",
     processing: "Sun-dried and ground",
     overview: "Premium red chili powder delivering perfect balance of heat, color, and flavor. Consistent spice levels in every batch.",

@@ -25,7 +25,7 @@ export const RawSpiceShowcase = () => {
       "Dhaniya Powder": rawPowderImages.dhaniyapowder,
       "Whole Pepper": rawPowderImages.wholepepper,
       "Turmeric Powder": rawPowderImages.turmericpowder,
-      "Chilly Powder": rawPowderImages.chillypowder,
+      "Chilli Powder": rawPowderImages.Chillipowder,
       "Jeera Powder": rawPowderImages.jeerapowder,
       "Garam Masala": rawPowderImages.garammasala,
       "Pepper Powder": rawPowderImages.pepperpowder,
@@ -79,13 +79,14 @@ export const RawSpiceShowcase = () => {
         {isMobile ? (
           // Mobile masonry (Pinterest-like) layout
           <div className="w-full">
-            <div className="columns-2 gap-4 [column-fill:_balance]">{/* Masonry using CSS columns */}
+            <div className="columns-2 gap-4 [column-fill:_balance]">
+              {/* Masonry using CSS columns */}
               {products.slice(0, 6).map((product, index) => {
                 const rawImages = [
                   rawPowderImages.dhaniyapowder,
                   rawPowderImages.wholepepper,
                   rawPowderImages.turmericpowder,
-                  rawPowderImages.chillypowder,
+                  rawPowderImages.Chillipowder,
                   rawPowderImages.jeerapowder,
                   rawPowderImages.garammasala,
                 ];
@@ -117,22 +118,33 @@ export const RawSpiceShowcase = () => {
                       {/* Soft top gradient + badge + action */}
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/10"></div>
                       <div className="absolute top-2 left-2 flex items-center gap-2">
-                        <span className="pointer-events-none select-none text-[10px] font-semibold tracking-wide uppercase rounded-full px-2 py-1 text-white bg-black/40 backdrop-blur">Raw</span>
+                        <span className="pointer-events-none select-none text-[10px] font-semibold tracking-wide uppercase rounded-full px-2 py-1 text-white bg-black/40 backdrop-blur">
+                          Raw
+                        </span>
                       </div>
                       <button
                         type="button"
                         aria-label="Save"
                         className="absolute top-2 right-2 rounded-full bg-white/80 text-gray-800 shadow-md p-2 active:scale-95 transition"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                          <path d="M11.645 20.91l-.007-.003-.022-.01a15.247 15.247 0 01-.383-.178 25.18 25.18 0 01-4.244-2.716C4.688 16.107 2.25 13.462 2.25 9.75 2.25 7.126 4.374 5 7 5c1.6 0 3.058.698 4.045 1.804C12.03 5.698 13.49 5 15.09 5c2.626 0 4.75 2.126 4.75 4.75 0 3.712-2.438 6.356-4.739 8.253a25.18 25.18 0 01-4.244 2.716 15.247 15.247 0 01-.383.178l-.022.01-.007.003-.003.001a.75.75 0 01-.586 0l-.003-.001z"/>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="w-4 h-4"
+                        >
+                          <path d="M11.645 20.91l-.007-.003-.022-.01a15.247 15.247 0 01-.383-.178 25.18 25.18 0 01-4.244-2.716C4.688 16.107 2.25 13.462 2.25 9.75 2.25 7.126 4.374 5 7 5c1.6 0 3.058.698 4.045 1.804C12.03 5.698 13.49 5 15.09 5c2.626 0 4.75 2.126 4.75 4.75 0 3.712-2.438 6.356-4.739 8.253a25.18 25.18 0 01-4.244 2.716 15.247 15.247 0 01-.383.178l-.022.01-.007.003-.003.001a.75.75 0 01-.586 0l-.003-.001z" />
                         </svg>
                       </button>
                     </div>
                     {/* Caption */}
                     <div className="px-3 pt-2 pb-3">
-                      <h3 className="text-[13px] font-semibold text-gray-800">Raw {product.name}</h3>
-                      <p className="text-[11px] text-gray-500">Premium quality • {product.category}</p>
+                      <h3 className="text-[13px] font-semibold text-gray-800">
+                        Raw {product.name}
+                      </h3>
+                      <p className="text-[11px] text-gray-500">
+                        Premium quality • {product.category}
+                      </p>
                     </div>
                   </motion.article>
                 );
@@ -153,7 +165,7 @@ export const RawSpiceShowcase = () => {
                   rawPowderImages.dhaniyapowder,
                   rawPowderImages.wholepepper,
                   rawPowderImages.turmericpowder,
-                  rawPowderImages.chillypowder,
+                  rawPowderImages.Chillipowder,
                   rawPowderImages.jeerapowder,
                   rawPowderImages.garammasala,
                 ];
@@ -162,18 +174,42 @@ export const RawSpiceShowcase = () => {
                   <motion.div
                     key={product.name}
                     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                    initial={{ x: 0, y: 0, scale: 0.8, rotate: 0, zIndex: 6 - index }}
-                    whileInView={{ x: gridPos.x, y: gridPos.y, scale: 1, rotate: 0, zIndex: 1 }}
+                    initial={{
+                      x: 0,
+                      y: 0,
+                      scale: 0.8,
+                      rotate: 0,
+                      zIndex: 6 - index,
+                    }}
+                    whileInView={{
+                      x: gridPos.x,
+                      y: gridPos.y,
+                      scale: 1,
+                      rotate: 0,
+                      zIndex: 1,
+                    }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.4, delay: index * 0.03, ease: "easeOut" }}
+                    transition={{
+                      duration: 0.4,
+                      delay: index * 0.03,
+                      ease: "easeOut",
+                    }}
                     onAnimationComplete={() => {
                       if (index === 5) setHasAnimated(true);
                     }}
                   >
                     <motion.div
                       className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl cursor-pointer"
-                      style={{ width: isTablet ? "220px" : "280px", height: isTablet ? "220px" : "280px" }}
-                      whileHover={{ y: -3, scale: 1.01, rotateY: 1, rotateX: 1 }}
+                      style={{
+                        width: isTablet ? "220px" : "280px",
+                        height: isTablet ? "220px" : "280px",
+                      }}
+                      whileHover={{
+                        y: -3,
+                        scale: 1.01,
+                        rotateY: 1,
+                        rotateX: 1,
+                      }}
                       transition={{ duration: 0.15, ease: "easeOut" }}
                     >
                       <div className="w-full h-full relative overflow-hidden">
@@ -187,11 +223,19 @@ export const RawSpiceShowcase = () => {
                           }}
                         />
                       </div>
-                      <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out`}>
+                      <div
+                        className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200 ease-out`}
+                      >
                         <div className="text-white">
-                          <span className="inline-block bg-orange-500 text-white font-semibold px-2 py-1 rounded-full mb-2 text-xs">Raw {product.category}</span>
-                          <h3 className="font-bold mb-1 text-lg">Raw {product.name}</h3>
-                          <p className="text-orange-200 text-sm">Premium Quality</p>
+                          <span className="inline-block bg-orange-500 text-white font-semibold px-2 py-1 rounded-full mb-2 text-xs">
+                            Raw {product.category}
+                          </span>
+                          <h3 className="font-bold mb-1 text-lg">
+                            Raw {product.name}
+                          </h3>
+                          <p className="text-orange-200 text-sm">
+                            Premium Quality
+                          </p>
                         </div>
                       </div>
                       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -211,9 +255,13 @@ export const RawSpiceShowcase = () => {
               transition={{ duration: 0.5 }}
             >
               <div className="flex items-center gap-2">
-                <div className={`bg-orange-400 rounded-full animate-pulse w-2 h-2`}></div>
+                <div
+                  className={`bg-orange-400 rounded-full animate-pulse w-2 h-2`}
+                ></div>
                 <span>Scroll to reveal</span>
-                <div className={`bg-orange-400 rounded-full animate-pulse w-2 h-2`}></div>
+                <div
+                  className={`bg-orange-400 rounded-full animate-pulse w-2 h-2`}
+                ></div>
               </div>
             </motion.div>
           </div>
