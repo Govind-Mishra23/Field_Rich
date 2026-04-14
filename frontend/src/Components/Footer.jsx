@@ -6,10 +6,13 @@ import {
   Instagram,
   Facebook,
   Twitter,
+  ExternalLink,
 } from "lucide-react";
 import fieldRichLogo from "../assets/Field Rich_Logo_v2.jpg";
 
 export const Footer = () => {
+  const developerContactUrl = "mailto:contact@fieldrichindia.com";
+
   return (
     <footer className="bg-gradient-to-r from-red-800 via-orange-800 to-red-900 text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -97,6 +100,26 @@ export const Footer = () => {
               ))}
             </div>
           </motion.div>
+        </div>
+
+        {/* Developer Marketing Strip */}
+        <div className="border-t border-b border-orange-500/30 bg-gradient-to-r from-red-900/80 via-orange-900/70 to-red-900/80">
+          <div className="px-4 py-4 sm:px-0">
+            <div className="mx-auto flex w-full max-w-3xl flex-col items-center justify-between gap-3 sm:flex-row sm:gap-4">
+              <a
+                href={developerContactUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-orange-300/60 bg-orange-400/15 px-5 py-2 text-sm font-semibold text-orange-100 transition-all duration-300 hover:bg-orange-400 hover:text-red-950"
+              >
+                Contact Developer
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+              <p className="text-center text-sm text-orange-200/90 sm:text-right">
+                Marketing partner and digital growth contact
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
