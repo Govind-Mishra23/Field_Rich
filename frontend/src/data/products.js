@@ -127,12 +127,12 @@ export const products = [
   {
     id: 4,
     name: "Chilli Powder",
-    description: "Perfect heat for every dish with balanced spiciness and rich red color from premium red chilies",
+    description: "Perfect heat for every dish with balanced spiciness and rich red color from premium red chillies",
     imgUrl: chillifront,
     images: [chillifront, chilliback, Chillipowder],
     category: "Regional Specialty",
     processing: "Sun-dried and ground",
-    overview: "Premium red chili powder delivering perfect balance of heat, color, and flavor. Consistent spice levels in every batch.",
+    overview: "Premium red chilli powder delivering perfect balance of heat, color, and flavor. Consistent spice levels in every batch.",
     benefits: [
       "Rich in Vitamin C and capsaicin",
       "Boosts metabolism",
@@ -140,7 +140,7 @@ export const products = [
       "Contains antimicrobial compounds"
     ],
     details: {
-      ingredients: "100% Red Chili Peppers",
+      ingredients: "100% Red Chilli Peppers",
       shelfLife: "15 months",
       storage: "Store in dry place, avoid sunlight",
       certifications: "FSSAI approved • Medium-Hot heat level"
