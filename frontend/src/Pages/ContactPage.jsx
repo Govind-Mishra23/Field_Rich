@@ -127,7 +127,7 @@ export const ContactPage = () => {
     },
     {
       icon: Facebook,
-      href: "#",
+      href: "https://www.facebook.com/profile.php?id=61590552002909",
       label: "Facebook",
       color: "from-blue-500 to-blue-600",
     },
