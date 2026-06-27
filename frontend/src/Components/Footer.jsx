@@ -14,7 +14,7 @@ export const Footer = () => {
   const developerContactUrl = "mailto:contact@fieldrichindia.com";
 
   return (
-    <footer className="bg-gradient-to-r from-red-800 via-orange-800 to-red-900 text-white py-16 px-4 sm:px-6 lg:px-8">
+    <footer clas="bg-gradient-to-r from-red-800 via-orange-800 to-red-900 text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
